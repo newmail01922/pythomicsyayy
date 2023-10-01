@@ -6,3 +6,52 @@ lxml==4.4.2
 matplotlib==3.1.2
 scipy==1.4.1
 pandas==0.25.3
+# Initialize an empty to-do list
+todo_list = []
+
+# Function to add a task to the list
+def add_task(task):
+    todo_list.append(task)
+    print(f"Task '{task}' has been added to your to-do list.")
+
+# Function to view the to-do list
+def view_list():
+    if not todo_list:
+        print("Your to-do list is empty.")
+    else:
+        print("Your to-do list:")
+        for i, task in enumerate(todo_list, 1):
+            print(f"{i}. {task}")
+
+# Function to remove a task from the list
+def remove_task(task_number):
+    if 1 <= task_number <= len(todo_list):
+        removed_task = todo_list.pop(task_number - 1)
+        print(f"Task '{removed_task}' has been removed from your to-do list.")
+    else:
+        print("Invalid task number. Please choose a valid task to remove.")
+
+# Main menu loop
+while True:
+    print("\nTo-Do List Menu:")
+    print("1. Add a task")
+    print("2. View your to-do list")
+    print("3. Remove a task")
+    print("4. Quit")
+
+    choice = input("Enter your choice (1/2/3/4): ")
+
+    if choice == "1":
+        task = input("Enter the task you want to add: ")
+        add_task(task)
+    elif choice == "2":
+        view_list()
+    elif choice == "3":
+        view_list()
+        task_number = int(input("Enter the number of the task you want to remove: "))
+        remove_task(task_number)
+    elif choice == "4":
+        print("Thank you for using the to-do list program. Goodbye!")
+        break
+    else:
+        print("Invalid choice. Please select a valid option (1/2/3/4).")
